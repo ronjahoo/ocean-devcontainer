@@ -1,0 +1,39 @@
+{
+    "name": "Ocean Development Environment",
+
+    "image": "docker.io/dwavesys/ocean-dev:latest",
+
+    "updateContentCommand": "pip install -r requirements.txt",
+
+    "forwardPorts": [
+        18000, 18001, 18002, 18003, 18004, 36000, 36001, 36002, 36003, 36003
+    ],
+
+    "portsAttributes": {
+        "18000-18004": {
+            "label": "D-Wave Problem Inspector",
+            "requiredLocalPort": true
+        },
+        "36000-36004": {
+            "label": "OAuth 2.0 authorization code redirect URI",
+            "requiredLocalPort": true
+        }
+    },
+
+    "customizations":{
+        "vscode": {
+            "settings": {
+                "workbench": {
+                    "editorAssociations": {
+                        "*.md": "vscode.markdown.preview.editor"
+                    },
+                    "startupEditor": "readme"
+                }
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter"
+            ]
+        }
+    }
+}
